@@ -18,13 +18,15 @@ namespace Webszolg
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
 
+            GetCurrencies();
+
             RefreshData();
-            dataGridView1.DataSource = Rates;
         }
 
         private void GetExchangeRates()
@@ -50,6 +52,8 @@ namespace Webszolg
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -76,9 +80,33 @@ namespace Webszolg
 
         }
 
+        private void GetCurrencies()
+        {
+
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
+            GetCurrenciesRequestBody request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+            foreach (XmlElement item in xml.DocumentElement.ChildNodes[0])
+            {
+
+                string newItem = item.InnerText;
+                Currencies.Add(newItem);
+            }
+
+            comboBox1.DataSource = Currencies;
+
+        }
+
         private void RefreshData()
         {
             Rates.Clear();
+
+            GetExchangeRates();
+
+            dataGridView1.DataSource = Rates;
 
         }
 
