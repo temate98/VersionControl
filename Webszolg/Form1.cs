@@ -7,14 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Webszolg.MnbServiceReference;
 
 namespace Webszolg
 {
     public partial class Form1 : Form
     {
+        //MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
+
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void GetExchangeRates()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            GetExchangeRatesRequestBody request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = "EUR",
+                startDate = "2020-01-01",
+                endDate = "2020-06-30"
+            };
+            var response = mnbService.GetExchangeRates(request);
+            var result = response.GetExchangeRatesResult;
+        }
+
     }
 }
