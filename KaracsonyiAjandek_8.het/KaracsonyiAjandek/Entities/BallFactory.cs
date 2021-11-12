@@ -8,6 +8,8 @@ namespace KaracsonyiAjandek.Entities
 {
     class BallFactory : IToyFactory
     {
+        public Color BallColor { get; set; }
+
         public Ball CreateNew()
         {
             return new Ball();
