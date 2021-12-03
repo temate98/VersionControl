@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WIZRXL_GitHub")]
+[assembly: AssemblyTitle("Mikroszim")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WIZRXL_GitHub")]
+[assembly: AssemblyProduct("Mikroszim")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5bc3ffe3-a25c-4140-829a-4a36fb4a6724")]
+[assembly: Guid("6e3b0642-e901-4cf1-b0f5-2f87954070fb")]
 
 // Version information for an assembly consists of the following four values:
 //
